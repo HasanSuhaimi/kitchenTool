@@ -46,9 +46,9 @@ public class startApp {
 
         //set the browser in the background
         ChromeOptions options = new ChromeOptions();
-
+        //options.setHeadless(true);
         //trying docker selenium standalone
-        String remoteUrl = "http://localhost:4444/wd/hub";
+        String remoteUrl = "http://47.242.27.217:4444/wd/hub";
         WebDriver driver = new RemoteWebDriver(new URL(remoteUrl),options);
 
         //make sure to pass options as the parameter
@@ -91,12 +91,18 @@ public class startApp {
         // make a list of all rows (/tr) in the table
         List <WebElement> rows_table = reportTable.findElements(By.tagName("tr"));
         int table_size = rows_table.size();
-        int savedAmount = checkDataAmount();
+        int savedAmount = checkDataAmount().getDatas().size();
+
+        //start bot
+        telegramBot bot = new telegramBot();
 
         //if no available data
         if(table_size == 0){
             System.out.println("No order yet");
             populateNewData();
+
+            //bot.sendToTelegram( "No order yet " + "Date : "+ checkDataAmount().getDate());
+            driver.quit();
         }
         //check existence data, if no new data, end chromedriver session
         else if(table_size != savedAmount) {
@@ -132,20 +138,21 @@ public class startApp {
                 data Data = datas.get(table_size - 1 - x);
                 appendNewData(Data);
             }
-
-            driver.quit();
             //get the amount of new order
             int amount = table_size - savedAmount;
             //startText text = new startText();
             //text.StartSession(amount + " order masuk, " + "total: " + table_size);
 
+            //bot.sendToTelegram(amount + " order masuk, " + "total: " + table_size + "Date : "+ checkDataAmount().getDate());
+
             //SaveData(datas,"data.yaml");
+            driver.quit();
         }
+        //
         else {
             System.out.println("No new order");
+            driver.quit();
         }
-
-        //driver.quit();
 
     }
 
@@ -226,7 +233,7 @@ public class startApp {
 
     }
 
-    public int checkDataAmount() throws Exception {
+    public dataFile checkDataAmount() throws Exception {
 
         File file = new File("Record");
 
@@ -237,7 +244,7 @@ public class startApp {
             ObjectMapper om = new ObjectMapper(new YAMLFactory());
             dataFile savedData = om.readValue(yamlFile, dataFile.class);
 
-            int size = savedData.getDatas().size();
+            //int size = savedData.getDatas().size();
 
             //List<data> datas = savedData.getDatas();
             /*for(int x = 0 ; x < datas.size(); x++)
@@ -245,14 +252,14 @@ public class startApp {
                 System.out.println("##########\n"+datas.get(x).getEntered_at()+" : "+datas.get(x).getStatus()+"\n##########\n" + datas.get(x).getTextMessage() + "\n");
             }*/
 
-            return size;
+            return savedData;
         }
         else
         {
             System.out.println("Creating new file");
             //initiate file class, create folder Record
             file.mkdirs();
-            return 0;
+            return null;
         }
 
     }
