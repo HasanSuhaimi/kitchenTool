@@ -49,10 +49,11 @@ public class startApp {
         options.setHeadless(true);
         //trying docker selenium standalone
         String remoteUrl = "http://localhost:4444/";
-        WebDriver driver = new RemoteWebDriver(new URL(remoteUrl),options);
+        String CHROMEDRIVER_PATH = "/usr/local/bin/chromedriver";
+        //WebDriver driver = new RemoteWebDriver(new URL(remoteUrl),options);
 
         //make sure to pass options as the parameter
-        //ChromeDriver driver = new ChromeDriver(options);
+        ChromeDriver driver = new ChromeDriver(options);
 
         SeleniumLogin(driver);
 
