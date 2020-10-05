@@ -57,7 +57,7 @@ public class startApp {
         String remoteUrl = "http://localhost:4444/";
         //WebDriver driver = new RemoteWebDriver(new URL(remoteUrl),options);
         //make sure to pass options as the parameter
-        ChromeDriver driver = new ChromeDriver(options);
+        WebDriver driver = new ChromeDriver(options);
 
         SeleniumLogin(driver);
 
