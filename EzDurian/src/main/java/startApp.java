@@ -19,8 +19,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-
 public class startApp {
 
     public static void main(String[] args) throws Exception {
