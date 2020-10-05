@@ -51,15 +51,11 @@ public class startApp {
         //set the browser in the background
         ChromeOptions options = new ChromeOptions();
         options.setHeadless(true);
-      
-        options.setBinary(new File(CHROMEDRIVER_PATH));
-        
-        options.addArguments("start-maximized");
         
         //trying docker selenium standalone
         String remoteUrl = "http://localhost:4444/";
         //WebDriver driver = new RemoteWebDriver(new URL(remoteUrl),options);
-
+        WebDriverManager.chromedriver().setup();
         //make sure to pass options as the parameter
         ChromeDriver driver = new ChromeDriver(options);
 
