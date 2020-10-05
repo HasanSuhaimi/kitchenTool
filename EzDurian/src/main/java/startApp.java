@@ -248,7 +248,7 @@ public class startApp {
         if (file.exists())
         {
             //get the yaml file and read the value, this is in windows
-            File yamlFile = new File(file.getPath()+"\\data.yaml");
+            File yamlFile = new File(file.getPath()+"/data.yaml");
             ObjectMapper om = new ObjectMapper(new YAMLFactory());
             dataFile savedData = om.readValue(yamlFile, dataFile.class);
 
