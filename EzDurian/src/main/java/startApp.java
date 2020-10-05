@@ -46,7 +46,7 @@ public class startApp {
 
         System.out.println("Starting");
         
-        String CHROMEDRIVER_PATH = "./usr/local/bin/chromedriver";
+        String CHROMEDRIVER_PATH = "/usr/local/bin/chromedriver";
         System.setProperty("webdriver.chrome.driver",CHROMEDRIVER_PATH);
         //set the browser in the background
         ChromeOptions options = new ChromeOptions();
