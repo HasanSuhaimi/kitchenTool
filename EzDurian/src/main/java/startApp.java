@@ -46,7 +46,7 @@ public class startApp {
 
         //set the browser in the background
         ChromeOptions options = new ChromeOptions();
-        //options.setHeadless(true);
+        options.setHeadless(true);
         //trying docker selenium standalone
         String remoteUrl = "http://47.242.27.217:4444/wd/hub";
         WebDriver driver = new RemoteWebDriver(new URL(remoteUrl),options);
@@ -101,7 +101,7 @@ public class startApp {
             System.out.println("No order yet");
             populateNewData();
 
-            //bot.sendToTelegram( "No order yet " + "Date : "+ checkDataAmount().getDate());
+            bot.sendToTelegram( "No order yet " + "Date : "+ checkDataAmount().getDate());
             driver.quit();
         }
         //check existence data, if no new data, end chromedriver session
@@ -143,7 +143,7 @@ public class startApp {
             //startText text = new startText();
             //text.StartSession(amount + " order masuk, " + "total: " + table_size);
 
-            //bot.sendToTelegram(amount + " order masuk, " + "total: " + table_size + "Date : "+ checkDataAmount().getDate());
+            bot.sendToTelegram(amount + " order masuk, " + "total: " + table_size + "Date : "+ checkDataAmount().getDate());
 
             //SaveData(datas,"data.yaml");
             driver.quit();
