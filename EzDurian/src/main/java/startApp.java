@@ -48,7 +48,7 @@ public class startApp {
         ChromeOptions options = new ChromeOptions();
         options.setHeadless(true);
         //trying docker selenium standalone
-        String remoteUrl = "http://47.242.27.217:4444/wd/hub";
+        String remoteUrl = "http://localhost:4444/";
         WebDriver driver = new RemoteWebDriver(new URL(remoteUrl),options);
 
         //make sure to pass options as the parameter
