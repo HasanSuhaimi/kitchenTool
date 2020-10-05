@@ -55,8 +55,6 @@ public class startApp {
         options.setBinary(new File(CHROMEDRIVER_PATH));
         
         options.addArguments("start-maximized");
-        options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
-        options.setExperimentalOption("useAutomationExtension", false);
         
         //trying docker selenium standalone
         String remoteUrl = "http://localhost:4444/";
