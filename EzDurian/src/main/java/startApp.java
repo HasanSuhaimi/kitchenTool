@@ -51,7 +51,10 @@ public class startApp {
         //set the browser in the background
         ChromeOptions options = new ChromeOptions();
         options.setHeadless(true);
-        options.setBinary(new File("/usr/bin/google-chrome"));
+        options.setBinary("/usr/bin/google-chrome");
+        options.addArguments("--headless");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-gpu");
         
         //trying docker selenium standalone
         String remoteUrl = "http://localhost:4444/";
