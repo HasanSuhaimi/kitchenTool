@@ -19,6 +19,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class startApp {
 
     public static void main(String[] args) throws Exception {
@@ -47,7 +49,7 @@ public class startApp {
         System.out.println("Starting");
         
         String CHROMEDRIVER_PATH = "/usr/local/bin/chromedriver";
-        System.setProperty("webdriver.chrome.driver",CHROMEDRIVER_PATH);
+        //System.setProperty("webdriver.chrome.driver",CHROMEDRIVER_PATH);
         //set the browser in the background
         ChromeOptions options = new ChromeOptions();
         options.setHeadless(true);
