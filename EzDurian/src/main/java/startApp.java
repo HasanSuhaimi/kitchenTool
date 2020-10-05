@@ -44,6 +44,7 @@ public class startApp {
 
     public void SeleniumPulldata() throws Exception {
 
+        System.out.println("Starting");
         //set the browser in the background
         ChromeOptions options = new ChromeOptions();
         options.setHeadless(true);
