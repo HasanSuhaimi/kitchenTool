@@ -146,7 +146,7 @@ public class startApp {
             //text.StartSession(amount + " order masuk, " + "total: " + table_size);
             
             dataFile newfile = checkDataAmount();
-            int value = newfile.getDatas().size;
+            int value = newfile.getDatas().size();
             
             bot.sendToTelegram("<b>"+amount + " Order masuk</b>!%0A " + "total: " + table_size + ",%0A Date : "+ newfile.getDate() + ",%0A Recipient: NP-"+newfile.getDatas().get(value-1).getGlobalIndex() + " : "+newfile.getDatas().get(value-1).getName() + ",%0A Product : "+ newfile.getDatas().get(amount).getProduct());
 
