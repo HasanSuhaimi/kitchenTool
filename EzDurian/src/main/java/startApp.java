@@ -244,7 +244,7 @@ public class startApp {
 
     public dataFile checkDataAmount() throws Exception {
 
-        File file = new File("Record");
+        File file = new File("/home/dev/Kitchentool/EzDurian/Record");
 
         File yamlFile = new File(file.getPath()+"/data.yaml");
         
