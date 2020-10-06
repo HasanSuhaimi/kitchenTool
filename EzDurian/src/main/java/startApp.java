@@ -106,15 +106,8 @@ public class startApp {
         //start bot
         telegramBot bot = new telegramBot();
 
-        //if no available data
-        if(table_size == 0){
-            System.out.println("No order yet");
-
-            bot.sendToTelegram( "No order yet " + "Date : "+ checkDataAmount().getDate());
-            driver.quit();
-        }
         //check existence data, if no new data, end chromedriver session
-        else if(table_size != savedAmount) {
+        if(table_size != savedAmount) {
             System.out.println("New order, updated file");
             // initiate a list of data
             List <data> datas = new ArrayList<data>();
@@ -166,7 +159,7 @@ public class startApp {
     }
 
     public void populateNewData() throws Exception {
-        File file = new File("Record");
+        File file = new File("/home/dev/Kitchentool/EzDurian/Record");
 
         if (file.exists())
         {
@@ -224,9 +217,9 @@ public class startApp {
 
     public void appendNewData(data data) throws Exception {
 
-        File file = new File("Record");
+        File file = new File("/home/dev/Kitchentool/EzDurian/Record");
         //get the config file and read the profile value, this is in windows
-        File DataFile = new File(file.getPath()+"\\data.yaml");
+        File DataFile = new File(file.getPath()+"/data.yaml");
 
         ObjectMapper om = new ObjectMapper(new YAMLFactory());
         dataFile savedData = om.readValue(DataFile, dataFile.class);
