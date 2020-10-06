@@ -107,7 +107,6 @@ public class startApp {
         //if no available data
         if(table_size == 0){
             System.out.println("No order yet");
-            populateNewData();
 
             bot.sendToTelegram( "No order yet " + "Date : "+ checkDataAmount().getDate());
             driver.quit();
@@ -151,7 +150,7 @@ public class startApp {
             //startText text = new startText();
             //text.StartSession(amount + " order masuk, " + "total: " + table_size);
 
-            bot.sendToTelegram(amount + " order masuk, " + "total: " + table_size + "Date : "+ checkDataAmount().getDate());
+            bot.sendToTelegram("<b>"+amount + " Order masuk</b>!%0A " + "total: " + table_size + ",%0A Date : "+ datafile.getDate() + ",%0A Recipient: NP-"+checkDataAmount().getDatas().get(savedAmount-1).getGlobalIndex() + " : "+checkDataAmount().getDatas().get(savedAmount-1).getName() + ",%0A Product : "+checkDataAmount().getDatas().get(savedAmount-1).getProduct());
 
             //SaveData(datas,"data.yaml");
             driver.quit();
@@ -245,29 +244,35 @@ public class startApp {
 
         File file = new File("Record");
 
-        if (file.exists())
+        File yamlFile = new File(file.getPath()+"/data.yaml");
+        
+        if (yamlFile.exists())
         {
             //get the yaml file and read the value, this is in windows
-            File yamlFile = new File(file.getPath()+"/data.yaml");
+            System.out.println("File exist, path: " + yamlFile.getAbsolutePath());
             ObjectMapper om = new ObjectMapper(new YAMLFactory());
             dataFile savedData = om.readValue(yamlFile, dataFile.class);
-
-            //int size = savedData.getDatas().size();
-
-            //List<data> datas = savedData.getDatas();
-            /*for(int x = 0 ; x < datas.size(); x++)
-            {
-                System.out.println("##########\n"+datas.get(x).getEntered_at()+" : "+datas.get(x).getStatus()+"\n##########\n" + datas.get(x).getTextMessage() + "\n");
-            }*/
-
+            
+            //return the file
             return savedData;
         }
         else
         {
-            System.out.println("Creating new file");
-            //initiate file class, create folder Record
-            file.mkdirs();
-            return null;
+            System.out.println("Creating new data.yaml file");
+
+            String date = new SimpleDateFormat("dd-MMM-YYYY").format(new Date());
+            //initiate datafile class
+            dataFile datafile = new dataFile(date,new ArrayList<data>());
+
+            //create new data.yaml inside the file folder Record
+            File tmpFile = new File(file, "data.yaml");
+            tmpFile.createNewFile();
+            // ObjectMapper is instantiated just like before
+            ObjectMapper om = new ObjectMapper(new YAMLFactory());
+            // map the data to the yaml file
+            om.writeValue(tmpFile, datafile);
+
+            return datafile;
         }
 
     }
