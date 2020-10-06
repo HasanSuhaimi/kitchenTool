@@ -99,7 +99,9 @@ public class startApp {
         // make a list of all rows (/tr) in the table
         List <WebElement> rows_table = reportTable.findElements(By.tagName("tr"));
         int table_size = rows_table.size();
-        int savedAmount = checkDataAmount().getDatas().size();
+        
+        dataFile datafile = checkDataAmount();
+        int savedAmount = datafile.getDatas().size();
 
         //start bot
         telegramBot bot = new telegramBot();
