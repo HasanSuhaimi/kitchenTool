@@ -147,7 +147,7 @@ public class startApp {
             
             dataFile newfile = checkDataAmount();
             
-            bot.sendToTelegram("<b>"+amount + " Order masuk</b>!%0A " + "total: " + table_size + ",%0A Date : "+ newfile.getDate() + ",%0A Recipient: NP-"+newfile.getDatas().get(amount).getGlobalIndex() + " : "+newfile.getDatas().get(amount).getName() + ",%0A Product : "+ newfilw.getDatas().get(amount).getProduct());
+            bot.sendToTelegram("<b>"+amount + " Order masuk</b>!%0A " + "total: " + table_size + ",%0A Date : "+ newfile.getDate() + ",%0A Recipient: NP-"+newfile.getDatas().get(amount).getGlobalIndex() + " : "+newfile.getDatas().get(amount).getName() + ",%0A Product : "+ newfile.getDatas().get(amount).getProduct());
 
             //SaveData(datas,"data.yaml");
             driver.quit();
