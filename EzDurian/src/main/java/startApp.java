@@ -204,7 +204,7 @@ public class startApp {
         dataFile datafile = new dataFile(date,datas);
 
         //initiate file class, get folder Record
-        File file = new File("Record");
+        File file = new File("/home/dev/Kitchentool/EzDurian/Record");
 
         //create file with name : yaml inside the file folder Record
         File tmpFile = new File(file, yaml);
