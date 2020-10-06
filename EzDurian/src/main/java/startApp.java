@@ -144,8 +144,10 @@ public class startApp {
             int amount = table_size - savedAmount;
             //startText text = new startText();
             //text.StartSession(amount + " order masuk, " + "total: " + table_size);
-
-            bot.sendToTelegram("<b>"+amount + " Order masuk</b>!%0A " + "total: " + table_size + ",%0A Date : "+ datafile.getDate() + ",%0A Recipient: NP-"+checkDataAmount().getDatas().get(savedAmount-1).getGlobalIndex() + " : "+checkDataAmount().getDatas().get(savedAmount-1).getName() + ",%0A Product : "+checkDataAmount().getDatas().get(savedAmount-1).getProduct());
+            
+            dataFile newfile = checkDataAmount();
+            
+            bot.sendToTelegram("<b>"+amount + " Order masuk</b>!%0A " + "total: " + table_size + ",%0A Date : "+ newfile.getDate() + ",%0A Recipient: NP-"+newfile.getDatas().get(amount).getGlobalIndex() + " : "+newfile.getDatas().get(amount).getName() + ",%0A Product : "+ newfilw.getDatas().get(amount).getProduct());
 
             //SaveData(datas,"data.yaml");
             driver.quit();
