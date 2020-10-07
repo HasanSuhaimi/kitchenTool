@@ -9,7 +9,7 @@ import java.net.URLEncoder;
 public class telegramBot {
 
     public void sendToTelegram(String text) throws Exception {
-        
+        String urlString = "https://api.telegram.org/bot%s/sendMessage?chat_id=%s&text=%s&parse_mode=HTML";
 
         //Add Telegram token (given Token is fake)
         String apiToken = "1274132052:AAG-pR735h24p2HQkWvXXYiroERsAo9j2Gg";
@@ -18,8 +18,8 @@ public class telegramBot {
         String chatId = "-469058163";
         //String text = "hello I spawned";
         
-        String urlString = "https://api.telegram.org/bot%s/sendMessage?chat_id="+chatId+"&text="+ URLEncoder.encode(text, "UTF-8") +"&parse_mode=HTML";
-        //urlString = String.format(urlString, apiToken, chatId, "HTML");
+        
+        urlString = String.format(urlString, apiToken, chatId, URLEncoder.encode(text, "UTF-8"));
 
         try {
             URL url = new URL(urlString);
