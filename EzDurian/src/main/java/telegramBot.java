@@ -8,7 +8,7 @@ import java.net.URLEncoder;
 
 public class telegramBot {
 
-    public void sendToTelegram(String text) {
+    public void sendToTelegram(String text) throws Exception {
         String urlString = "https://api.telegram.org/bot%s/sendMessage?chat_id=%s&text="+ URLEncoder.encode(text, "UTF-8") +"&parse_mode=%s";
 
         //Add Telegram token (given Token is fake)
