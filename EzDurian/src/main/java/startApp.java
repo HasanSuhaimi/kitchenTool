@@ -152,12 +152,12 @@ public class startApp {
             int value = newfile.getDatas().size();
             
             for(int x = amount; x > 0; x--) {
-                
-                bot.sendToTelegram("<b>"+amount + " Order masuk!</b>" + "=total: " + table_size +
-                                   ",= Date : "+ newfile.getDate()+ 
-                                   ",= Confirmed at : "+ newfile.getDatas().get(value-x).getConfirmed_at()+
-                                   ",= Recipient: NP-"+newfile.getDatas().get(value-x).getGlobalIndex() + " : "+newfile.getDatas().get(value-x).getName()+
-                                   ",= Product : "+ newfile.getDatas().get(value-x).getProduct());
+                //URLEncoder.encode(text, "UTF-8").replace("=","%20")
+                bot.sendToTelegram("<b>"+amount + " Order masuk!</b>" + "%20total: " + table_size +
+                                   ",%20 Date : "+ newfile.getDate()+ 
+                                   ",%20 Confirmed at : "+ newfile.getDatas().get(value-x).getConfirmed_at()+
+                                   ",%20 Recipient: NP-"+newfile.getDatas().get(value-x).getGlobalIndex() + " : "+newfile.getDatas().get(value-x).getName()+
+                                   ",%20 Product : "+ URLEncoder.encode(newfile.getDatas().get(value-x).getProduct(),"UTF-8");
        
             }
           
