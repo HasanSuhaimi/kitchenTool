@@ -161,7 +161,7 @@ public class startApp {
                                    ",%20 Date : "+ newfile.getDate()+ 
                                    ",%20 Confirmed at : "+ newfile.getDatas().get(value-x).getConfirmed_at()+
                                    ",%20 Recipient: NP-"+newfile.getDatas().get(value-x).getGlobalIndex() + " : "+newfile.getDatas().get(value-x).getName()+
-                                   ",%20 Product : "+ product ;
+                                   ",%20 Product : "+ product );
        
             }
           
