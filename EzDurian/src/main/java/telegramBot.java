@@ -19,7 +19,7 @@ public class telegramBot {
         //String text = "hello I spawned";
         
         
-        urlString = String.format(urlString, apiToken, chatId, URLEncoder.encode(text, "UTF-8").replace("+","%20"));
+        urlString = String.format(urlString, apiToken, chatId, URLEncoder.encode(text, "UTF-8").replace("=","%20"));
 
         try {
             URL url = new URL(urlString);
