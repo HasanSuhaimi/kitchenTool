@@ -153,11 +153,11 @@ public class startApp {
             
             for(int x = amount; x > 0; x--) {
                 
-                bot.sendToTelegram("<b>"+amount + " Order masuk</b>!%0A " + "total: " + table_size +
-                                   ",/nA Date : "+ newfile.getDate()+ 
-                                   ",/nA Confirmed at : "+ newfile.getDatas().get(value-x).getConfirmed_at()+
-                                   ",/nA Recipient: NP-"+newfile.getDatas().get(value-x).getGlobalIndex() + " : "+newfile.getDatas().get(value-x).getName()+
-                                   ",/nA Product : "+ newfile.getDatas().get(value-x).getProduct());
+                bot.sendToTelegram("<b>"+amount + " Order masuk!</b>" + "=total: " + table_size +
+                                   ",= Date : "+ newfile.getDate()+ 
+                                   ",= Confirmed at : "+ newfile.getDatas().get(value-x).getConfirmed_at()+
+                                   ",= Recipient: NP-"+newfile.getDatas().get(value-x).getGlobalIndex() + " : "+newfile.getDatas().get(value-x).getName()+
+                                   ",= Product : "+ newfile.getDatas().get(value-x).getProduct());
        
             }
           
