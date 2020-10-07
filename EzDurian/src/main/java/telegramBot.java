@@ -8,7 +8,7 @@ import java.net.URLConnection;
 public class telegramBot {
 
     public void sendToTelegram(String text) {
-        String urlString = "https://api.telegram.org/bot%s/sendMessage?chat_id=%s&text=%s&parse_mode=%s";
+        String urlString = "https://api.telegram.org/bot%s/sendMessage?chat_id=%s&text="+ URLEncoder.encode(text, "UTF-8") +"&parse_mode=%s";
 
         //Add Telegram token (given Token is fake)
         String apiToken = "1274132052:AAG-pR735h24p2HQkWvXXYiroERsAo9j2Gg";
@@ -17,7 +17,7 @@ public class telegramBot {
         String chatId = "-469058163";
         //String text = "hello I spawned";
 
-        urlString = String.format(urlString, apiToken, chatId, text, "HTML");
+        urlString = String.format(urlString, apiToken, chatId, "HTML");
 
         try {
             URL url = new URL(urlString);
