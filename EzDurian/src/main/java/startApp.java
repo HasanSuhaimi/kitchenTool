@@ -156,12 +156,14 @@ public class startApp {
             for(int x = amount; x > 0; x--) {
                 //URLEncoder.encode(text, "UTF-8").replace("=","%20")
                 
+                String name = URLEncoder.encode(newfile.getDatas().get(value-x).getName(),"UTF-8");
                 String product = URLEncoder.encode(newfile.getDatas().get(value-x).getProduct(),"UTF-8");
-                bot.sendToTelegram("<b>"+amount + " Order masuk!</b>" + "%20total: " + table_size +
-                                   ",%20 Date : "+ newfile.getDate()+ 
-                                   ",%20 Confirmed at : "+ newfile.getDatas().get(value-x).getConfirmed_at()+
-                                   ",%20 Recipient: NP-"+newfile.getDatas().get(value-x).getGlobalIndex() + " : "+newfile.getDatas().get(value-x).getName()+
-                                   ",%20 Product : "+ product );
+                
+                bot.sendToTelegram("<b>"+amount + " Order masuk!</b>" + "%0Atotal: " + table_size +
+                                   ",%0A Date : "+ newfile.getDate()+ 
+                                   ",%0A Confirmed at : "+ newfile.getDatas().get(value-x).getConfirmed_at()+
+                                   ",%0A Recipient: NP-"+newfile.getDatas().get(value-x).getGlobalIndex() + " : "+ name +
+                                   ",%0A Product : "+ product );
        
             }
           
