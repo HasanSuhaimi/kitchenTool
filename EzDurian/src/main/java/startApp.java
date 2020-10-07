@@ -105,11 +105,11 @@ public class startApp {
 
         //start bot
         telegramBot bot = new telegramBot();
+        String nowDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
 
         //check existence data, if no new data, end chromedriver session
         if(table_size != savedAmount) {
-            String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-            System.out.println(date + "New order, updated file");
+            System.out.println(nowDate + "New order, updated file");
             // initiate a list of data
             List <data> datas = new ArrayList<data>();
             //store data in a list (with the latest first)
@@ -156,8 +156,7 @@ public class startApp {
         }
         //
         else {
-            String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-            System.out.println(date + "No new order");
+            System.out.println(nowDate + "No new order");
             driver.quit();
         }
 
