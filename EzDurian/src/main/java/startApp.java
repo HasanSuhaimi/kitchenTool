@@ -135,6 +135,8 @@ public class startApp {
                 data Data = new data(index,invoice,name,number,adress,field1,field2,product,total,entered_at,confirmed_at,status);
                 datas.add(Data);
             }
+            
+            driver.quit();
 
             //iterate the list and store each data (from oldest to latest)
             for(int x = savedAmount; x < table_size; x++) {
@@ -149,10 +151,16 @@ public class startApp {
             dataFile newfile = checkDataAmount();
             int value = newfile.getDatas().size();
             
-            bot.sendToTelegram("<b>"+amount + " Order masuk</b>!%0A " + "total: " + table_size + ",%0A Date : "+ newfile.getDate()+ ",%0A Confirmed at : "+ newfile.getDatas().get(value-1).getConfirmed_at() + ",%0A Recipient: NP-"+newfile.getDatas().get(value-1).getGlobalIndex() + " : "+newfile.getDatas().get(value-1).getName() + ",%0A Product : "+ newfile.getDatas().get(value-1).getProduct());
-
-            //SaveData(datas,"data.yaml");
-            driver.quit();
+            for(int x = 0; x < amount; x++) {
+                
+                bot.sendToTelegram("<b>"+amount + " Order masuk</b>!%0A " + "total: " + table_size +
+                                   ",%0A Date : "+ newfile.getDate()+ 
+                                   ",%0A Confirmed at : "+ newfile.getDatas().get(value-1-x).getConfirmed_at()+
+                                   ",%0A Recipient: NP-"+newfile.getDatas().get(value-1-x).getGlobalIndex() + " : "+newfile.getDatas().get(value-1-x).getName()+
+                                   ",%0A Product : "+ newfile.getDatas().get(value-1-x).getProduct());
+       
+            }
+          
         }
         //
         else {
