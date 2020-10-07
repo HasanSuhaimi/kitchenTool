@@ -159,11 +159,11 @@ public class startApp {
                 String name = URLEncoder.encode(newfile.getDatas().get(value-x).getName(),"UTF-8");
                 String product = URLEncoder.encode(newfile.getDatas().get(value-x).getProduct(),"UTF-8");
                 
-                bot.sendToTelegram("<b>"+amount + " Order masuk!</b>" + "%0Atotal: " + table_size +
-                                   ",%0A Date : "+ newfile.getDate()+ 
-                                   ",%0A Confirmed at : "+ newfile.getDatas().get(value-x).getConfirmed_at()+
-                                   ",%0A Recipient: NP-"+newfile.getDatas().get(value-x).getGlobalIndex() + " : "+ name +
-                                   ",%0A Product : "+ product );
+                bot.sendToTelegram("<b>"+amount + " ORDER MASUK!</b>" + "%0Atotal: " + table_size +
+                                   ",%0A <b>Date :</b> "+ newfile.getDate()+ 
+                                   ",%0A <b>Confirmed at :</b> "+ newfile.getDatas().get(value-x).getConfirmed_at()+
+                                   ",%0A <b>Recipient:</b> NP-"+newfile.getDatas().get(value-x).getGlobalIndex() + " : "+ name +
+                                   ",%0A <b>Product :</b> "+ product );
        
             }
           
