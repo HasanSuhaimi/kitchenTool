@@ -156,7 +156,7 @@ public class startApp {
                 bot.sendToTelegram("<b>"+amount + " Order masuk</b>!%0A " + "total: " + table_size +
                                    ",%0A Date : "+ newfile.getDate()+ 
                                    ",%0A Confirmed at : "+ newfile.getDatas().get(value-x).getConfirmed_at()+
-                                   ",%0A Recipient: NP-"+newfile.getDatas().get(value-x).getGlobalIndex() + " : "+newfile.getDatas().get(value-1-x).getName()+
+                                   ",%0A Recipient: NP-"+newfile.getDatas().get(value-x).getGlobalIndex() + " : "+newfile.getDatas().get(value-x).getName()+
                                    ",%0A Product : "+ newfile.getDatas().get(value-x).getProduct());
        
             }
