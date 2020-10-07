@@ -1,5 +1,6 @@
 import java.io.File;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,6 +19,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 public class startApp {
 
@@ -153,11 +155,13 @@ public class startApp {
             
             for(int x = amount; x > 0; x--) {
                 //URLEncoder.encode(text, "UTF-8").replace("=","%20")
+                
+                String product = URLEncoder.encode(newfile.getDatas().get(value-x).getProduct(),"UTF-8");
                 bot.sendToTelegram("<b>"+amount + " Order masuk!</b>" + "%20total: " + table_size +
                                    ",%20 Date : "+ newfile.getDate()+ 
                                    ",%20 Confirmed at : "+ newfile.getDatas().get(value-x).getConfirmed_at()+
                                    ",%20 Recipient: NP-"+newfile.getDatas().get(value-x).getGlobalIndex() + " : "+newfile.getDatas().get(value-x).getName()+
-                                   ",%20 Product : "+ URLEncoder.encode(newfile.getDatas().get(value-x).getProduct(),"UTF-8");
+                                   ",%20 Product : "+ product ;
        
             }
           
