@@ -109,7 +109,7 @@ public class startApp {
 
         //check existence data, if no new data, end chromedriver session
         if(table_size != savedAmount) {
-            System.out.println(nowDate + "New order, updated file");
+            System.out.println(nowDate + ": New order, updated file");
             // initiate a list of data
             List <data> datas = new ArrayList<data>();
             //store data in a list (with the latest first)
@@ -156,7 +156,7 @@ public class startApp {
         }
         //
         else {
-            System.out.println(nowDate + "No new order");
+            System.out.println(nowDate + ": No new order");
             driver.quit();
         }
 
