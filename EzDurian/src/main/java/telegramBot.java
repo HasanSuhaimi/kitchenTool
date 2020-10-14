@@ -15,7 +15,7 @@ public class telegramBot {
         String apiToken = "1274132052:AAG-pR735h24p2HQkWvXXYiroERsAo9j2Gg";
 
         //Add chatId (given chatId is fake)
-        String chatId = "-469058163";
+        String chatId = "-1001233026149";
         //String text = "hello I spawned";
         
         
