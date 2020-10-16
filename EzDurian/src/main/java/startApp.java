@@ -118,6 +118,8 @@ public class startApp {
 
         SeleniumLogin(driver);
 
+        try
+        {
         driver.get("https://ezydurian.onpay.my/admin/reports/sales");
 
         driver.findElement(By.name("c[invoice_number]")).click();
@@ -229,6 +231,13 @@ public class startApp {
         //
         else {
             System.out.println(nowDate + ": No new order");
+            driver.quit();
+        }
+        
+        }
+        catch (Exception e) {
+
+            System.out.println(e);
             driver.quit();
         }
 
