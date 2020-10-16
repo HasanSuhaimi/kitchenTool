@@ -166,11 +166,18 @@ public class startApp {
                 
                 String name = URLEncoder.encode(newfile.getDatas().get(value-x).getName(),"UTF-8");
                 String product = URLEncoder.encode(newfile.getDatas().get(value-x).getProduct(),"UTF-8");
+                String contNumber = URLEncoder.encode(newfile.getDatas().get(value-x).getNumber,"UTF-8");
+                String address = URLEncoder.encode(newfile.getDatas().get(value-x).getAdress,"UTF-8");
                 
                 bot.sendToTelegram("<b>"+amount + " ORDER MASUK!</b>" + "%0Atotal: " + table_size + 
                                    ",%0A <b>Confirmed at :</b> "+ newfile.getDatas().get(value-x).getConfirmed_at()+
                                    ",%0A <b>Recipient:</b> NP-"+newfile.getDatas().get(value-x).getGlobalIndex() + " : "+ name +
                                    ",%0A <b>Product :</b> "+ product );
+                
+                bot.sendToTelegram("Whatsapp / SMS merchant %0A Delivery request form%0A 1. Sama-Sama Lokal by Maybank" +
+                "%0A 2. Restaurant / Gerai : Ezydurian %0A %0A Order: "+"%0A 1. Recipient name: " + name +
+                "%0A 2. Recipient contact number: "+ contNumber + "%0A 3. Delivery address: " + address +
+                "%0A 4. Pick up time: now %0A %0A Thanks team Maybank :)");
        
             }
           
