@@ -51,6 +51,51 @@ public class startApp {
         loginButton.click();
 
     }
+    
+    public void SeleniumForm() throws Exception {
+        
+        String CHROMEDRIVER_PATH = "/usr/local/bin/chromedriver";
+        System.setProperty("webdriver.chrome.driver",CHROMEDRIVER_PATH);
+        //set the browser in the background
+        ChromeOptions options = new ChromeOptions();
+        options.setHeadless(true);
+        options.setBinary("/usr/bin/google-chrome");
+        options.addArguments("--headless");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-gpu");
+        
+        options.addArguments(("--start-maximized"));
+        WebDriver driver = new ChromeDriver(options);
+
+        SeleniumLogin(driver);
+        
+        try
+        {
+            //get webpage and login
+            driver.get("https://ezydurian.onpay.my/admin/forms/edit/46");
+
+            WebElement pilihan = driver.findElement(By.xpath("//a[@href=\"#t-options\"]"));
+
+            pilihan.click();
+
+            WebElement minisiteBox = driver.findElement(By.xpath("//input[@id=\"minisite_enabled\"]"));
+            Actions actions = new Actions(driver);
+            actions.moveToElement(minisiteBox).click().build().perform();
+            Thread.sleep(500);
+
+            WebElement savedBox = driver.findElement(By.xpath("//button[@type=\"submit\"]"));
+            savedBox.click();
+            Thread.sleep(2500);
+
+            driver.quit();
+        }
+        catch (Exception e) {
+
+            System.out.println(e);
+            driver.quit();
+        }
+
+    }
 
     public void SeleniumPulldata() throws Exception {
 
