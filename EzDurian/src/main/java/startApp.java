@@ -63,8 +63,7 @@ public class startApp {
         options.addArguments("--headless");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-gpu");
-        
-        options.addArguments(("--start-maximized"));
+       
         WebDriver driver = new ChromeDriver(options);
 
         SeleniumLogin(driver);
