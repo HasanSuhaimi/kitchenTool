@@ -166,8 +166,8 @@ public class startApp {
                 
                 String name = URLEncoder.encode(newfile.getDatas().get(value-x).getName(),"UTF-8");
                 String product = URLEncoder.encode(newfile.getDatas().get(value-x).getProduct(),"UTF-8");
-                String contNumber = URLEncoder.encode(newfile.getDatas().get(value-x).getNumber,"UTF-8");
-                String address = URLEncoder.encode(newfile.getDatas().get(value-x).getAdress,"UTF-8");
+                String contNumber = URLEncoder.encode(newfile.getDatas().get(value-x).getNumber(),"UTF-8");
+                String address = URLEncoder.encode(newfile.getDatas().get(value-x).getAdress(),"UTF-8");
                 
                 bot.sendToTelegram("<b>"+amount + " ORDER MASUK!</b>" + "%0Atotal: " + table_size + 
                                    ",%0A <b>Confirmed at :</b> "+ newfile.getDatas().get(value-x).getConfirmed_at()+
