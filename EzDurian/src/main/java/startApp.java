@@ -25,7 +25,15 @@ public class startApp {
 
     public static void main(String[] args) throws Exception {
         startApp start = new startApp();
-        start.SeleniumPulldata();
+        try
+        {
+            start.SeleniumPulldata();
+        }
+        catch (Exception e) {
+
+            System.out.println(e);
+            System.exit(0);
+        }
     }
 
     public void SeleniumLogin(WebDriver driver) throws Exception {
