@@ -217,7 +217,7 @@ public class startApp {
                 
                 bot.sendToTelegram("<b>NEW ORDER: "+"NP. "+newfile.getDatas().get(value-x).getGlobalIndex()+"!</b>" + "%0Atotal: " + table_size + 
                                    ",%0A <b>Confirmed at :</b> "+ newfile.getDatas().get(value-x).getConfirmed_at()+
-                                   ",%0A <b>Recipient:</b> NP. "+newfile.getDatas().get(value-x).getGlobalIndex() + " : "+ name +
+                                   ",%0A <b>Recipient:</b> NP. "+newfile.getDatas().get(value-x).getGlobalIndex() + " "+ name +
                                    ",%0A <b>Product :</b> "+ product );
                 
                 bot.sendToTelegram("Whatsapp / SMS merchant %0A Delivery request form%0A 1. Sama-Sama Lokal by Maybank" +
