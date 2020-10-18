@@ -221,7 +221,7 @@ public class startApp {
                                    ",%0A <b>Product :</b> "+ product );
                 
                 bot.sendToTelegram("Whatsapp / SMS merchant %0A Delivery request form%0A 1. Sama-Sama Lokal by Maybank" +
-                "%0A 2. Restaurant / Gerai : Ezydurian %0A %0A Order: "+"%0A 1. Recipient name: NP."+newfile.getDatas().get(value-x).getGlobalIndex() + " : "+ name +
+                "%0A 2. Restaurant / Gerai : Ezydurian %0A %0A Order: "+"%0A 1. Recipient name: NP."+newfile.getDatas().get(value-x).getGlobalIndex() + " "+ name +
                 "%0A 2. Recipient contact number: "+ contNumber + "%0A 3. Delivery address: " + address +
                 "%0A 4. Pick up time: now %0A %0A Thanks team Maybank :)");
        
