@@ -214,11 +214,13 @@ public class startApp {
                 String product = URLEncoder.encode(newfile.getDatas().get(value-x).getProduct(),"UTF-8");
                 String contNumber = URLEncoder.encode(newfile.getDatas().get(value-x).getNumber(),"UTF-8");
                 String address = URLEncoder.encode(newfile.getDatas().get(value-x).getAdress(),"UTF-8");
+                String field2 = URLEncoder.encode(newfile.getDatas().get(value-x).getField2(),"UTF-8");
                 
                 bot.sendToTelegram("<b>NEW ORDER: "+"NP. "+newfile.getDatas().get(value-x).getGlobalIndex()+"!</b>" + "%0Atotal: " + table_size + 
                                    ",%0A <b>Confirmed at :</b> "+ newfile.getDatas().get(value-x).getConfirmed_at()+
                                    ",%0A <b>Recipient:</b> NP. "+newfile.getDatas().get(value-x).getGlobalIndex() + " "+ name +
-                                   ",%0A <b>Product :</b> "+ product );
+                                   ",%0A <b>Product :</b> "+ product +
+                                   ",%0A <b>Alternative no :</b> "+ field2 );
                 
                 bot.sendToTelegram("Whatsapp / SMS merchant %0A Delivery request form%0A 1. Sama-Sama Lokal by Maybank" +
                 "%0A 2. Restaurant / Gerai : Ezydurian %0A %0A Order: "+"%0A 1. Recipient name: NP."+newfile.getDatas().get(value-x).getGlobalIndex() + " "+ name +
