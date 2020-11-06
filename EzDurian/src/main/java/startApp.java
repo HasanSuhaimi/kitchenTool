@@ -45,7 +45,7 @@ public class startApp {
 
         WebElement loginButton = driver.findElement(By.name("login"));
 
-        username.sendKeys("ezydurian@gmail.com");
+        username.sendKeys("Ezyduriansales@gmail.com");
         password.sendKeys("ezydurian123");
 
         loginButton.click();
