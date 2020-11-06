@@ -166,6 +166,8 @@ public class startApp {
         //check existence data, if no new data, end chromedriver session
         if(table_size != savedAmount) {
             System.out.println(nowDate + ": New order, updated file");
+            //initiate a new list to store invoice from the web
+            List <String> invoicesL = new ArrayList<String>();
             // initiate a list of data
             List <data> datas = new ArrayList<data>();
             //store data in a list (with the latest first)
@@ -189,46 +191,57 @@ public class startApp {
                 String status = column_row.get(12).getText();
 
                 data Data = new data(index,invoice,name,number,adress,field1,field2,product,total,entered_at,confirmed_at,status);
+                invoicesL.add(invoice);
                 datas.add(Data);
             }
             
             driver.quit();
+            //convert the stored data invoice List to Set
+            Set<String> dataSet = new HashSet<>(datafile.getInvoices());
 
-            //iterate the list and store each data (from oldest to latest)
-            for(int x = savedAmount; x < table_size; x++) {
-                data Data = datas.get(table_size - 1 - x);
-                appendNewData(Data);
-            }
-            //get the amount of new order
-            int amount = table_size - savedAmount;
-            //startText text = new startText();
-            //text.StartSession(amount + " order masuk, " + "total: " + table_size);
-            
-            dataFile newfile = checkDataAmount();
-            int value = newfile.getDatas().size();
-            
-            for(int x = amount; x > 0; x--) {
-                //URLEncoder.encode(text, "UTF-8").replace("=","%20")
-                
-                String name = URLEncoder.encode(newfile.getDatas().get(value-x).getName(),"UTF-8");
-                String product = URLEncoder.encode(newfile.getDatas().get(value-x).getProduct(),"UTF-8");
-                String contNumber = URLEncoder.encode(newfile.getDatas().get(value-x).getNumber(),"UTF-8");
-                String address = URLEncoder.encode(newfile.getDatas().get(value-x).getAdress(),"UTF-8");
-                String field2 = URLEncoder.encode(newfile.getDatas().get(value-x).getField2(),"UTF-8");
-                
-                bot.sendToTelegram("<b>NEW ORDER: "+"NP. "+newfile.getDatas().get(value-x).getGlobalIndex()+"!</b>" + "%0Atotal: " + table_size + 
-                                   ",%0A <b>Confirmed at :</b> "+ newfile.getDatas().get(value-x).getConfirmed_at()+
-                                   ",%0A <b>Recipient:</b> NP. "+newfile.getDatas().get(value-x).getGlobalIndex() + " "+ name +
-                                   ",%0A <b>Product :</b> "+ product +
-                                   ",%0A <b>Alternative no :</b> "+ field2 );
-                
-                bot.sendToTelegram("Whatsapp / SMS merchant %0A Delivery request form%0A 1. Sama-Sama Lokal by Maybank" +
-                "%0A 2. Restaurant / Gerai : Ezydurian %0A %0A Order: "+"%0A 1. Recipient name: NP."+newfile.getDatas().get(value-x).getGlobalIndex() + " "+ name +
-                "%0A 2. Recipient contact number: "+ contNumber + "%0A 3. Delivery address: " + address +
-                "%0A 4. Pick up time: now %0A %0A Thanks team Maybank :)");
-       
-            }
-          
+            for (int x = table_size; x > 0; x--) {
+                    String el = invoicesL.get(x-1);
+                    //System.out.println(el);
+
+                    if (!dataSet.contains(el)) {
+
+                        //get index of the missing invoice in the list from web
+                        int indexOfMissingInv = invoicesL.indexOf(el);
+
+                        //get the String index of the targeted element
+                        String index = datas.get(indexOfMissingInv).getIndex();
+                        int itemIndex = Integer.parseInt(index) - 1;
+
+                        data dataItem = datas.get(itemIndex);
+
+                        // read saved data (yaml file, db etc)
+                        dataFile File = checkDataAmount();
+                        //arguments: new data, current stored datas, new invoice, current stored list, yaml file
+                        appendDataFile(dataItem, File.getDatas(), el, File.getInvoices(),"data.yaml");
+
+                        //send the missing invoice to telegram
+                        String name = URLEncoder.encode(datas.get(indexOfMissingInv).getName(),"UTF-8");
+                        String product = URLEncoder.encode(datas.get(indexOfMissingInv).getProduct(),"UTF-8");
+                        String contNumber = URLEncoder.encode(datas.get(indexOfMissingInv).getNumber(),"UTF-8");
+                        String address = URLEncoder.encode(datas.get(indexOfMissingInv).getAdress(),"UTF-8");
+                        String field2 = URLEncoder.encode(datas.get(indexOfMissingInv).getField2(),"UTF-8");
+
+                        String confirmedAt = URLEncoder.encode(datas.get(indexOfMissingInv).getConfirmed_at(),"UTF-8");
+
+                        //globalIndex will be the size of stored data
+                        int globalIndex = File.getDatas().size();
+
+                        bot.sendToTelegramPre("<b>NEW ORDER: "+"NP. "+globalIndex+"!</b>" + "%0Atotal: " + table_size +
+                                ",%0A <b>Confirmed at :</b> "+ confirmedAt +
+                                ",%0A <b>Recipient:</b> NP. "+globalIndex + " "+ name +
+                                ",%0A <b>Product :</b> "+ product +
+                                ",%0A <b>Alternative no :</b> "+ field2 );
+                        bot.sendToTelegramPre("Whatsapp / SMS merchant %0A Delivery request form%0A 1. Sama-Sama Lokal by Maybank" +
+                                "%0A 2. Restaurant / Gerai : Ezydurian %0A %0A Order: "+"%0A 1. Recipient name: NP."+ globalIndex + " "+ name +
+                                "%0A 2. Recipient contact number: "+ contNumber + "%0A 3. Delivery address: " + address +
+                                "%0A 4. Pick up time: now %0A %0A Thanks team Maybank :)");
+                    }
+                }
         }
         //
         else {
@@ -302,24 +315,21 @@ public class startApp {
         om.writeValue(tmpFile, datafile);
     }
 
-    public void appendNewData(data data) throws Exception {
+    public void appendDataFile(startApp.data newData, List<data> currentDatas,String invoice, List<String> currentInvoices, String yamlFileName) throws Exception {
 
         File file = new File("/home/dev/Kitchentool/EzDurian/Record");
         //get the config file and read the profile value, this is in windows
         File DataFile = new File(file.getPath()+"/data.yaml");
 
         ObjectMapper om = new ObjectMapper(new YAMLFactory());
-        dataFile savedData = om.readValue(DataFile, dataFile.class);
-        //get datas from yaml file in list
-        List<data> dataList = savedData.getDatas();
-        int globalIndex = dataList.size();
-        dataList.add(data);
-        //set the global index
-        dataList.get(globalIndex).setGlobalIndex(globalIndex+1);
-
-
-        SaveData(dataList,"data.yaml");
-
+        
+        currentDatas.add(newData);
+        currentInvoices.add(invoice);
+        
+         //initiate datafile class
+        startApp.dataFile datafile = new startApp.dataFile("",currentDatas,currentInvoices);
+        // map the data to the yaml file
+        om.writeValue(DataFile, datafile);
     }
 
     public dataFile checkDataAmount() throws Exception {
@@ -344,7 +354,7 @@ public class startApp {
 
             String date = new SimpleDateFormat("dd-MMM-YYYY").format(new Date());
             //initiate datafile class
-            dataFile datafile = new dataFile(date,new ArrayList<data>());
+            dataFile datafile = new dataFile(date,new ArrayList<data>(),new ArrayList<String>());
 
             //create new data.yaml inside the file folder Record
             File tmpFile = new File(file, "data.yaml");
@@ -478,15 +488,17 @@ public class startApp {
         }
 
     }
-    public static class dataFile {
+   public static class dataFile {
 
         private String date;
+        private List<String> invoices;
         private List<data> datas;
 
         public dataFile () {}
-        public dataFile (String date, List<data> datas) {
+        public dataFile (String date, List<data> datas, List<String> invoices) {
             this.date = date;
             this.datas = datas;
+            this.invoices = invoices;
         }
 
         public void setDate(String release) {
@@ -497,12 +509,20 @@ public class startApp {
             this.datas = datas;
         }
 
+        public void setInvoices(List<String> invoices) {
+            this.invoices = invoices;
+        }
+
         public String getDate() {
             return date;
         }
 
         public List<data> getDatas() {
             return datas;
+        }
+
+        public List<String> getInvoices() {
+            return invoices;
         }
 
     }
