@@ -224,12 +224,12 @@ public class startApp {
                         //globalIndex will be the size of stored data
                         int globalIndex = File.getDatas().size();
 
-                        bot.sendToTelegramPre("<b>NEW ORDER: "+"NP. "+globalIndex+"!</b>" + "%0Atotal: " + table_size +
+                        bot.sendToTelegram("<b>NEW ORDER: "+"NP. "+globalIndex+"!</b>" + "%0Atotal: " + table_size +
                                 ",%0A <b>Confirmed at :</b> "+ confirmedAt +
                                 ",%0A <b>Recipient:</b> NP. "+globalIndex + " "+ name +
                                 ",%0A <b>Product :</b> "+ product +
                                 ",%0A <b>Alternative no :</b> "+ field2 );
-                        bot.sendToTelegramPre("Whatsapp / SMS merchant %0A Delivery request form%0A 1. Sama-Sama Lokal by Maybank" +
+                        bot.sendToTelegram("Whatsapp / SMS merchant %0A Delivery request form%0A 1. Sama-Sama Lokal by Maybank" +
                                 "%0A 2. Restaurant / Gerai : Ezydurian %0A %0A Order: "+"%0A 1. Recipient name: NP."+ globalIndex + " "+ name +
                                 "%0A 2. Recipient contact number: "+ contNumber + "%0A 3. Delivery address: " + address +
                                 "%0A 4. Pick up time: now %0A %0A Thanks team Maybank :)");
