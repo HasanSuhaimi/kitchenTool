@@ -251,63 +251,6 @@ public class startApp {
 
     }
 
-    public void populateNewData() throws Exception {
-        File file = new File("/home/dev/Kitchentool/EzDurian/Record");
-
-        if (file.exists())
-        {
-            String date = new SimpleDateFormat("dd-MMM-YYYY").format(new Date());
-            //initiate datafile class
-            dataFile datafile = new dataFile(date,new ArrayList<data>());
-
-            //create new data.yaml inside the file folder Record
-            File tmpFile = new File(file, "data.yaml");
-            tmpFile.createNewFile();
-            // ObjectMapper is instantiated just like before
-            ObjectMapper om = new ObjectMapper(new YAMLFactory());
-            // map the data to the yaml file
-            om.writeValue(tmpFile, datafile);
-
-        }
-        else
-        {
-            System.out.println("Creating new file");
-            //initiate file class, create folder Record
-            file.mkdirs();
-            String date = new SimpleDateFormat("dd-MMM-YYYY").format(new Date());
-            //initiate datafile class
-            dataFile datafile = new dataFile(date,new ArrayList<data>());
-
-            //create new data.yaml inside the file folder Record
-            File tmpFile = new File(file, "data.yaml");
-            tmpFile.createNewFile();
-            // ObjectMapper is instantiated just like before
-            ObjectMapper om = new ObjectMapper(new YAMLFactory());
-            // map the data to the yaml file
-            om.writeValue(tmpFile, datafile);
-
-        }
-
-    }
-
-    public void SaveData(List<data> datas, String yaml) throws Exception {
-
-        String date = new SimpleDateFormat("dd-MMM-YYYY").format(new Date());
-        //initiate datafile class
-        dataFile datafile = new dataFile(date,datas);
-
-        //initiate file class, get folder Record
-        File file = new File("/home/dev/Kitchentool/EzDurian/Record");
-
-        //create file with name : yaml inside the file folder Record
-        File tmpFile = new File(file, yaml);
-        tmpFile.createNewFile();
-        // ObjectMapper is instantiated just like before
-        ObjectMapper om = new ObjectMapper(new YAMLFactory());
-        // map the data to the yaml file
-        om.writeValue(tmpFile, datafile);
-    }
-
     public void appendDataFile(startApp.data newData, List<data> currentDatas,String invoice, List<String> currentInvoices, String yamlFileName) throws Exception {
 
         File file = new File("/home/dev/Kitchentool/EzDurian/Record");
