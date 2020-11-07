@@ -28,8 +28,9 @@ public class telegramBot {
             InputStream is = new BufferedInputStream(conn.getInputStream());
         } catch (IOException e) {
             System.out.println("Errors : "+e);
-            sendToTelegramPre("Errors : "+ e.toString());
+            
             e.printStackTrace();
+            //sendToTelegramPre("Errors : "+ e.toString());
         }
     }
     
