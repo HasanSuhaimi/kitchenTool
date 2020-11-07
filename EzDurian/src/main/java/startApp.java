@@ -246,7 +246,7 @@ public class startApp {
         }
         catch (Exception e) {
             bot.sendToTelegramPre("errors alert :"+e.toString());
-            System.out.println(e);
+            System.out.println("errors alert :"+e);
             driver.quit();
         }
 
