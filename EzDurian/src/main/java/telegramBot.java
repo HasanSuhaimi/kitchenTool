@@ -29,7 +29,7 @@ public class telegramBot {
         } catch (IOException e) {
             
             e.printStackTrace();
-            sendToTelegramPre("Errors please check the server);
+            sendToTelegramPre("Errors please check the server");
         }
     }
     
