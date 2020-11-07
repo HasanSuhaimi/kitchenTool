@@ -109,6 +109,9 @@ public class startApp {
         //make sure to pass options as the parameter
         WebDriver driver = new ChromeDriver(options);
 
+        //start bot
+        telegramBot bot = new telegramBot();
+        
         SeleniumLogin(driver);
 
         try
@@ -152,8 +155,6 @@ public class startApp {
         dataFile datafile = checkDataAmount();
         int savedAmount = datafile.getDatas().size();
 
-        //start bot
-        telegramBot bot = new telegramBot();
         String nowDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
 
         //check existence data, if no new data, end chromedriver session
