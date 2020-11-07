@@ -31,5 +31,29 @@ public class telegramBot {
             e.printStackTrace();
         }
     }
+    
+    public void sendToTelegramPre(String text) throws Exception {
+        String urlString = "https://api.telegram.org/bot%s/sendMessage?chat_id=%s&text=%s&parse_mode=HTML";
+
+        //Add Telegram token (given Token is fake)
+        String apiToken = "1274132052:AAG-pR735h24p2HQkWvXXYiroERsAo9j2Gg";
+
+        //Add chatId (given chatId is fake)
+        String chatId = "-481662745";
+        //String text = "hello I spawned";
+
+
+        urlString = String.format(urlString, apiToken, chatId, text);
+
+        try {
+            URL url = new URL(urlString);
+            URLConnection conn = url.openConnection();
+
+            InputStream is = new BufferedInputStream(conn.getInputStream());
+        } catch (IOException e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+    }
 
 }
