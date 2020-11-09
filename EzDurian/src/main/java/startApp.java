@@ -240,10 +240,10 @@ public class startApp {
 
                         } catch (Exception e) {
                            bot.sendToTelegram("<b>NEW ORDER: "+"NP. "+globalIndex+" pending!</b>" + "%0Atotal: " + table_size);
+                           bot.sendToTelegramPre("Errors please check the server");    
                            System.out.println(e);
-            
                            e.printStackTrace();
-                           sendToTelegramPre("Errors please check the server");    
+                           
                         }
                     }
                 }
