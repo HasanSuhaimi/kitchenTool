@@ -30,7 +30,7 @@ public class telegramBot {
             System.out.println(e);
             
             e.printStackTrace();
-            sendToTelegramPre("Errors please check the server\n\n"+urlString);
+            sendToTelegramPre("Errors please check the server");
         }
     }
     
