@@ -238,7 +238,7 @@ public class startApp {
                                 "%0A 2. Recipient contact number: "+ contNumber + "%0A 3. Delivery address: " + address +
                                 "%0A 4. Pick up time: now %0A %0A Thanks team Maybank :)");
 
-                        } catch (IOException e) {
+                        } catch (Exception e) {
                            bot.sendToTelegram("<b>NEW ORDER: "+"NP. "+globalIndex+" pending!</b>" + "%0Atotal: " + table_size);
                                
                         }
