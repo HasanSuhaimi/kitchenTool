@@ -21,17 +21,11 @@ public class telegramBot {
         
         urlString = String.format(urlString, apiToken, chatId, text);
 
-        try {
-            URL url = new URL(urlString);
-            URLConnection conn = url.openConnection();
+        URL url = new URL(urlString);
+        URLConnection conn = url.openConnection();
 
-            InputStream is = new BufferedInputStream(conn.getInputStream());
-        } catch (IOException e) {
-            System.out.println(e);
-            
-            e.printStackTrace();
-            sendToTelegramPre("Errors please check the server");
-        }
+        InputStream is = new BufferedInputStream(conn.getInputStream());
+        
     }
     
     public void sendToTelegramPre(String text) throws Exception {
