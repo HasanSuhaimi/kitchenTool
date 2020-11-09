@@ -225,6 +225,9 @@ public class startApp {
                         //globalIndex will be the size of stored data
                         int globalIndex = File.getDatas().size();
 
+                        // add try block
+                        try {
+                             
                         bot.sendToTelegram("<b>NEW ORDER: "+"NP. "+globalIndex+"!</b>" + "%0Atotal: " + table_size +
                                 ",%0A <b>Confirmed at :</b> "+ confirmedAt +
                                 ",%0A <b>Recipient:</b> NP. "+globalIndex + " "+ name +
@@ -234,7 +237,12 @@ public class startApp {
                                 "%0A 2. Restaurant / Gerai : Ezydurian %0A %0A Order: "+"%0A 1. Recipient name: NP."+ globalIndex + " "+ name +
                                 "%0A 2. Recipient contact number: "+ contNumber + "%0A 3. Delivery address: " + address +
                                 "%0A 4. Pick up time: now %0A %0A Thanks team Maybank :)");
-                    }
+
+                        } catch (IOException e) {
+                           bot.sendToTelegram("<b>NEW ORDER: "+"NP. "+globalIndex+" pending!</b>" + "%0Atotal: " + table_size);
+                               
+                        }
+                                           }
                 }
         }
         //
