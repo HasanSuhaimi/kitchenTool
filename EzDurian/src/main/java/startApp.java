@@ -233,14 +233,23 @@ public class startApp {
                                 ",%0A <b>Recipient:</b> NP. "+globalIndex + " "+ name +
                                 ",%0A <b>Product :</b> "+ product +
                                 ",%0A <b>Alternative no :</b> "+ field2 );
+
+                        } catch (Exception e) {
+                           bot.sendToTelegram("<b>NEW ORDER: "+"NP. "+globalIndex+" pending!</b>" + "%0Atotal: " + table_size);
+                           bot.sendToTelegramPre("Errors please check the server");    
+                           System.out.println(e);
+                           e.printStackTrace();
+                           
+                        }
+                        // add 2nd try block
+                        try {
+                             
                         bot.sendToTelegram("Whatsapp / SMS merchant %0A Delivery request form%0A 1. Sama-Sama Lokal by Maybank" +
                                 "%0A 2. Restaurant / Gerai : Ezydurian %0A %0A Order: "+"%0A 1. Recipient name: NP."+ globalIndex + " "+ name +
                                 "%0A 2. Recipient contact number: "+ contNumber + "%0A 3. Delivery address: " + address +
                                 "%0A 4. Pick up time: now %0A %0A Thanks team Maybank :)");
 
-                        } catch (Exception e) {
-                           bot.sendToTelegram("<b>NEW ORDER: "+"NP. "+globalIndex+" pending!</b>" + "%0Atotal: " + table_size);
-                           bot.sendToTelegramPre("Errors please check the server");    
+                        } catch (Exception e) {   
                            System.out.println(e);
                            e.printStackTrace();
                            
