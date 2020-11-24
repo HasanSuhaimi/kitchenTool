@@ -215,7 +215,10 @@ public class startApp {
 
                         //send the missing invoice to telegram
                         String name = URLEncoder.encode(datas.get(indexOfMissingInv).getName(),"UTF-8");
-                        String product = URLEncoder.encode(datas.get(indexOfMissingInv).getProduct(),"UTF-8");
+                        
+                        //String product = URLEncoder.encode(datas.get(indexOfMissingInv).getProduct(),"UTF-8");
+                        String product = datas.get(indexOfMissingInv).getProduct();
+                        
                         String contNumber = URLEncoder.encode(datas.get(indexOfMissingInv).getNumber(),"UTF-8");
                         String address = URLEncoder.encode(datas.get(indexOfMissingInv).getAdress(),"UTF-8");
                         String field2 = URLEncoder.encode(datas.get(indexOfMissingInv).getField2(),"UTF-8");
@@ -241,19 +244,7 @@ public class startApp {
                            e.printStackTrace();
                            
                         }
-                        // add 2nd try block
-                        try {
-                             
-                        bot.sendToTelegram("Whatsapp / SMS merchant %0A Delivery request form%0A 1. Sama-Sama Lokal by Maybank" +
-                                "%0A 2. Restaurant / Gerai : Ezydurian %0A %0A Order: "+"%0A 1. Recipient name: NP."+ globalIndex + " "+ name +
-                                "%0A 2. Recipient contact number: "+ contNumber + "%0A 3. Delivery address: " + address +
-                                "%0A 4. Pick up time: now %0A %0A Thanks team Maybank :)");
-
-                        } catch (Exception e) {   
-                           System.out.println(e);
-                           e.printStackTrace();
-                           
-                        }
+                        
                     }
                 }
         }
