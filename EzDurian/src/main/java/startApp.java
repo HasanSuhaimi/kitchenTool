@@ -216,8 +216,8 @@ public class startApp {
                         //send the missing invoice to telegram
                         String name = URLEncoder.encode(datas.get(indexOfMissingInv).getName(),"UTF-8");
                         
-                        //String product = URLEncoder.encode(datas.get(indexOfMissingInv).getProduct(),"UTF-8");
-                        String product = datas.get(indexOfMissingInv).getProduct();
+                        String product = URLEncoder.encode(datas.get(indexOfMissingInv).getProduct(),"UTF-8");
+                        //String product = datas.get(indexOfMissingInv).getProduct();
                         
                         String contNumber = URLEncoder.encode(datas.get(indexOfMissingInv).getNumber(),"UTF-8");
                         String address = URLEncoder.encode(datas.get(indexOfMissingInv).getAdress(),"UTF-8");
