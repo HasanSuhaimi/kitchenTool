@@ -239,6 +239,14 @@ public class startApp {
 
                         } catch (Exception e) {
                            bot.sendToTelegram("<b>NEW ORDER: "+"NP. "+globalIndex+" pending!</b>" + "%0Atotal: " + table_size);
+                           
+                           String URL = URLEncoder.encode("<b>NEW ORDER: "+"NP. "+globalIndex+"!</b>" + "%0Atotal: " + table_size +
+                                ",%0A <b>Confirmed at :</b> "+ confirmedAt +
+                                ",%0A <b>Recipient:</b> NP. "+globalIndex + " "+ name +
+                                ",%0A <b>Product :</b> "+ product +
+                                ",%0A <b>Alternative no :</b> "+ field2,"UTF-8");
+                           
+                           bot.sendToTelegramPre(URL);   
                            bot.sendToTelegramPre("Errors please check the server");    
                            System.out.println(e);
                            e.printStackTrace();
