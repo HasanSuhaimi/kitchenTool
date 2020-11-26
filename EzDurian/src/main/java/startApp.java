@@ -214,9 +214,11 @@ public class startApp {
                         appendDataFile(dataItem, File.getDatas(), el, File.getInvoices(),"data.yaml");
 
                         //send the missing invoice to telegram
-                        String name = URLEncoder.encode(datas.get(indexOfMissingInv).getName(),"UTF-8");
+                        String baseName = datas.get(indexOfMissingInv).getName();
+                        String name = URLEncoder.encode(baseName,"UTF-8");
                         
-                        String product = URLEncoder.encode(datas.get(indexOfMissingInv).getProduct(),"UTF-8");
+                        String baseProduct = datas.get(indexOfMissingInv).getProduct();
+                        String product = URLEncoder.encode(baseProduct,"UTF-8");
                         //String product = datas.get(indexOfMissingInv).getProduct();
                         
                         String contNumber = URLEncoder.encode(datas.get(indexOfMissingInv).getNumber(),"UTF-8");
@@ -243,11 +245,11 @@ public class startApp {
                         } catch (Exception e) {
                            bot.sendToTelegram("<b>NEW ORDER: "+"NP. "+globalIndex+" pending!</b>" + "%0Atotal: " + table_size);
                            
-                           String URL = URLEncoder.encode("<b>NEW ORDER: "+"NP. "+globalIndex+"!</b>" + "%0Atotal: " + table_size +
-                                ",%0A <b>Confirmed at :</b> "+ confirmedAt +
-                                ",%0A <b>Recipient:</b> NP. "+globalIndex + " "+ name +
-                                ",%0A <b>Product :</b> "+ product +
-                                ",%0A <b>Alternative no :</b> "+ field2,"UTF-8");
+                           String URL = URLEncoder.encode("<b>NEW ORDER: "+"NP. "+globalIndex+"!</b>" + "\ntotal: " + table_size +
+                                ",\n <b>Confirmed at :</b> "+ confirmedAt +
+                                ",\n <b>Recipient:</b> NP. "+globalIndex + " "+ baseName +
+                                ",\n <b>Product :</b> "+ baseProduct +
+                                ",\n <b>Alternative no :</b> "+ field2,"UTF-8");
                            
                            bot.sendToTelegramPre(URL);   
                            bot.sendToTelegramPre("Errors please check the server");    
