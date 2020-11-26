@@ -221,6 +221,7 @@ public class startApp {
                         
                         String contNumber = URLEncoder.encode(datas.get(indexOfMissingInv).getNumber(),"UTF-8");
                         String address = URLEncoder.encode(datas.get(indexOfMissingInv).getAdress(),"UTF-8");
+                        String field1 = URLEncoder.encode(datas.get(indexOfMissingInv).getField1(),"UTF-8");
                         String field2 = URLEncoder.encode(datas.get(indexOfMissingInv).getField2(),"UTF-8");
 
                         String confirmedAt = URLEncoder.encode(datas.get(indexOfMissingInv).getConfirmed_at(),"UTF-8");
@@ -235,7 +236,8 @@ public class startApp {
                                 ",%0A <b>Confirmed at :</b> "+ confirmedAt +
                                 ",%0A <b>Recipient:</b> NP. "+globalIndex + " "+ name +
                                 ",%0A <b>Product :</b> "+ product +
-                                ",%0A <b>Alternative no :</b> "+ field2 );
+                                ",%0A <b>Alternative no :</b> "+ field2 +
+                                ",%0A <b>Delivery info :</b> "+ field1 );
 
                         } catch (Exception e) {
                            bot.sendToTelegram("<b>NEW ORDER: "+"NP. "+globalIndex+" pending!</b>" + "%0Atotal: " + table_size);
