@@ -237,7 +237,8 @@ public class startApp {
                                 ",%0A <b>Recipient:</b> NP. "+globalIndex + " "+ name +
                                 ",%0A <b>Product :</b> "+ product +
                                 ",%0A <b>Alternative no :</b> "+ field2 +
-                                ",%0A <b>Delivery info :</b> "+ field1 );
+                                ",%0A <b>Delivery info :</b> "+ field1 +
+                                ",%0A <b>Recipient address :</b> "+ address );
 
                         } catch (Exception e) {
                            bot.sendToTelegram("<b>NEW ORDER: "+"NP. "+globalIndex+" pending!</b>" + "%0Atotal: " + table_size);
