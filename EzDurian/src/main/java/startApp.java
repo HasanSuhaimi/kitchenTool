@@ -239,6 +239,15 @@ public class startApp {
                         //globalIndex will be the size of stored data
                         int globalIndex = File.getDatas().size();
 
+                        String URL = URLEncoder.encode("<b>NEW ORDER: "+"NP. "+globalIndex+"!</b>" + "\ntotal: " + table_size +
+                                ",\n <b>Confirmed at :</b> "+ baseConfirmedAt +
+                                ",\n <b>Recipient:</b> NP. "+globalIndex + " "+ baseName +
+                                ",\n <b>Product :</b> "+ baseProduct +
+                                ",\n <b>Alternative no :</b> "+ baseField2+
+                                ",\n <b>Primary no :</b> "+ baseContNumber +
+                                ",\n <b>Delivery info :</b> "+ baseField1 +
+                                ",\n <b>Recipient address :</b> "+ baseAddress,"UTF-8");
+                        
                         // add try block
                         try {
                             bot.sendToTelegram("<b>NEW ORDER: "+"NP. "+globalIndex+"!</b>" + "%0Atotal: " + table_size +
@@ -252,15 +261,6 @@ public class startApp {
 
                         } catch (Exception e) {
                            bot.sendToTelegram("<b>NEW ORDER: "+"NP. "+globalIndex+" pending!</b>" + "%0Atotal: " + table_size);
-                           
-                           String URL = URLEncoder.encode("<b>NEW ORDER: "+"NP. "+globalIndex+"!</b>" + "\ntotal: " + table_size +
-                                ",\n <b>Confirmed at :</b> "+ baseConfirmedAt +
-                                ",\n <b>Recipient:</b> NP. "+globalIndex + " "+ baseName +
-                                ",\n <b>Product :</b> "+ baseProduct +
-                                ",\n <b>Alternative no :</b> "+ baseField2+
-                                ",\n <b>Primary no :</b> "+ baseContNumber +
-                                ",\n <b>Delivery info :</b> "+ baseField1 +
-                                ",\n <b>Recipient address :</b> "+ baseAddress,"UTF-8");
                            
                            bot.sendToTelegramPre(URL);   
                            bot.sendToTelegramPre("Errors please check the server");    
