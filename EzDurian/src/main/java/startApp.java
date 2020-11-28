@@ -221,12 +221,20 @@ public class startApp {
                         String product = URLEncoder.encode(baseProduct,"UTF-8");
                         //String product = datas.get(indexOfMissingInv).getProduct();
                         
-                        String contNumber = URLEncoder.encode(datas.get(indexOfMissingInv).getNumber(),"UTF-8");
-                        String address = URLEncoder.encode(datas.get(indexOfMissingInv).getAdress(),"UTF-8");
-                        String field1 = URLEncoder.encode(datas.get(indexOfMissingInv).getField1(),"UTF-8");
-                        String field2 = URLEncoder.encode(datas.get(indexOfMissingInv).getField2(),"UTF-8");
+                        String baseContNumber = datas.get(indexOfMissingInv).getNumber();
+                        String contNumber = URLEncoder.encode(baseContNumber,"UTF-8");
+                        
+                        String baseAddress = datas.get(indexOfMissingInv).getAdress();
+                        String address = URLEncoder.encode(baseAddress,"UTF-8");
+                        
+                        String baseField1 = datas.get(indexOfMissingInv).getField1();
+                        String field1 = URLEncoder.encode(baseField1,"UTF-8");
+                        
+                        String baseField2 = datas.get(indexOfMissingInv).getField2();
+                        String field2 = URLEncoder.encode(baseField2,"UTF-8");
 
-                        String confirmedAt = URLEncoder.encode(datas.get(indexOfMissingInv).getConfirmed_at(),"UTF-8");
+                        String baseConfirmedAt = datas.get(indexOfMissingInv).getConfirmed_at();
+                        String confirmedAt = URLEncoder.encode(baseConfirmedAt,"UTF-8");
 
                         //globalIndex will be the size of stored data
                         int globalIndex = File.getDatas().size();
@@ -246,10 +254,13 @@ public class startApp {
                            bot.sendToTelegram("<b>NEW ORDER: "+"NP. "+globalIndex+" pending!</b>" + "%0Atotal: " + table_size);
                            
                            String URL = URLEncoder.encode("<b>NEW ORDER: "+"NP. "+globalIndex+"!</b>" + "\ntotal: " + table_size +
-                                ",\n <b>Confirmed at :</b> "+ confirmedAt +
+                                ",\n <b>Confirmed at :</b> "+ baseConfirmedAt +
                                 ",\n <b>Recipient:</b> NP. "+globalIndex + " "+ baseName +
                                 ",\n <b>Product :</b> "+ baseProduct +
-                                ",\n <b>Alternative no :</b> "+ field2,"UTF-8");
+                                ",\n <b>Alternative no :</b> "+ baseField2+
+                                ",\n <b>Primary no :</b> "+ baseContNumber +
+                                ",\n <b>Delivery info :</b> "+ baseField2 +
+                                ",%0A <b>Recipient address :</b> "+ baseAddress,"UTF-8");
                            
                            bot.sendToTelegramPre(URL);   
                            bot.sendToTelegramPre("Errors please check the server");    
