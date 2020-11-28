@@ -241,16 +241,14 @@ public class startApp {
 
                         // add try block
                         try {
-                            String URL = URLEncoder.encode("<b>NEW ORDER: "+"NP. "+globalIndex+"!</b>" + "\ntotal: " + table_size +
-                                ",\n <b>Confirmed at :</b> "+ baseConfirmedAt +
-                                ",\n <b>Recipient:</b> NP. "+globalIndex + " "+ baseName +
-                                ",\n <b>Product :</b> "+ baseProduct +
-                                ",\n <b>Alternative no :</b> "+ baseField2+
-                                ",\n <b>Primary no :</b> "+ baseContNumber +
-                                ",\n <b>Delivery info :</b> "+ baseField2 +
-                                ",\n <b>Recipient address :</b> "+ baseAddress,"UTF-8");
-                            
-                            bot.sendToTelegram(URL);
+                            bot.sendToTelegram("<b>NEW ORDER: "+"NP. "+globalIndex+"!</b>" + "%0Atotal: " + table_size +
+                                ",%0A <b>Confirmed at :</b> "+ confirmedAt +
+                                ",%0A <b>Recipient:</b> NP. "+globalIndex + " "+ name +
+                                ",%0A <b>Product :</b> "+ product +
+                                ",%0A <b>Alternative no :</b> "+ field2+
+                                ",%0A <b>Primary no :</b> "+ contNumber  +
+                                ",%0A <b>Delivery info :</b> "+ field1 +
+                                ",%0A <b>Recipient address :</b> "+ address );
 
                         } catch (Exception e) {
                            bot.sendToTelegram("<b>NEW ORDER: "+"NP. "+globalIndex+" pending!</b>" + "%0Atotal: " + table_size);
