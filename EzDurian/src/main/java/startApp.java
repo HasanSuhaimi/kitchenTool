@@ -280,8 +280,7 @@ public class startApp {
         
         }
         catch (Exception e) {
-            bot.sendToTelegramPre("errors alert :"+e.toString());
-            System.out.println("errors alert :"+e);
+            System.out.println(nowDate+" errors alert :"+e);
             driver.quit();
         }
 
