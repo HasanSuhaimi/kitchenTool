@@ -280,7 +280,7 @@ public class startApp {
         
         }
         catch (Exception e) {
-            System.out.println(nowDate+" errors alert :"+e);
+            System.out.println("errors alert :"+e);
             driver.quit();
         }
 
