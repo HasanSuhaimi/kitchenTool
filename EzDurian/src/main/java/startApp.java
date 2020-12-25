@@ -242,11 +242,11 @@ public class startApp {
                         String URL = URLEncoder.encode("<b>NEW ORDER: "+"NP. "+globalIndex+"!</b>" + "\ntotal: " + table_size +
                                 ",\n <b>Confirmed at :</b> "+ baseConfirmedAt +
                                 ",\n <b>Recipient:</b> NP. "+globalIndex + " "+ baseName +
-                                ",\n <b>Product :</b> "+ baseProduct +
-                                ",\n <b>Alternative no :</b> "+ baseField2+
                                 ",\n <b>Primary no :</b> "+ baseContNumber +
+                                ",\n <b>Alternative no :</b> "+ baseField2+
                                 ",\n <b>Delivery info :</b> "+ baseField1 +
-                                ",\n <b>Recipient address :</b> "+ baseAddress,"UTF-8");
+                                ",\n <b>Recipient address :</b> "+ baseAddress +
+                                ",\n\n <b>Product :</b> "+ baseProduct,"UTF-8");
                         
                         // add try block
                         try {
