@@ -157,9 +157,9 @@ public class startApp {
 
         String nowDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
 
-        //check existence data, if no new data, end chromedriver session
-        if(table_size != savedAmount) {
-            System.out.println(nowDate + ": New order, updated file");
+        //check existence data, if no new unsaved data, end chromedriver session
+        if(table_size > savedAmount) {
+            System.out.println(nowDate + ": New order, updated file, total: "+ table_size + ", saved amount: "+ savedAmount);
             //initiate a new list to store invoice from the web
             List <String> invoicesL = new ArrayList<String>();
             // initiate a list of data
@@ -274,7 +274,7 @@ public class startApp {
         }
         //
         else {
-            System.out.println(nowDate + ": No new order");
+            System.out.println(nowDate + ": No new order, total: "+ table_size + ", saved amount: "+ savedAmount);
             driver.quit();
         }
         
@@ -422,41 +422,6 @@ public class startApp {
 
         public void setStatus (String value) {this.status = value;}
         public String getStatus () { return status; }
-
-        public String getTextMessage () {
-
-            String textMessage="Whatsapp / SMS merchant\n" +
-                    "delivery request form\n" +
-                    "1. Sama-Sama Lokal by Maybank\n" +
-                    "2. Restaurant / Gerai : ezydurian\n\n" +
-                    "Order:\n" +
-                    "1. Recipient name: "+"NP-"+ index +" "+ name + "\n" +
-                    "2. Recipient contact number: "+ number + "\n" +
-                    "3. Delivery address: "+ adress + "\n" +
-                    "4. Pick up time: now \n\n" +
-                    "Thanks team Maybank  :)";
-
-            return textMessage;
-        }
-
-        public Action getTextAction (Actions action, WebElement textBox) {
-
-            //create a series of action
-            Action texting = action.moveToElement(textBox).sendKeys("Whatsapp / SMS merchant").keyDown(Keys.SHIFT).sendKeys("\n").
-                    keyUp(Keys.SHIFT).sendKeys("delivery request form").keyDown(Keys.SHIFT).sendKeys("\n").
-                    keyUp(Keys.SHIFT).sendKeys("1. Sama-Sama Lokal by Maybank").keyDown(Keys.SHIFT).sendKeys("\n").
-                    keyUp(Keys.SHIFT).sendKeys("2. Restaurant / Gerai : ezydurian").keyDown(Keys.SHIFT).sendKeys("\n\n").
-                    keyUp(Keys.SHIFT).sendKeys("Order:").keyDown(Keys.SHIFT).sendKeys("\n").
-                    keyUp(Keys.SHIFT).sendKeys("1. Recipient name: "+"NP-"+index +" "+ name).keyDown(Keys.SHIFT).sendKeys("\n").
-                    keyUp(Keys.SHIFT).sendKeys("2. Recipient contact number: "+ number).keyDown(Keys.SHIFT).sendKeys("\n").
-                    keyUp(Keys.SHIFT).sendKeys("3. Delivery address: "+ adress).keyDown(Keys.SHIFT).sendKeys("\n").
-                    keyUp(Keys.SHIFT).sendKeys("4. Pick up time: now ").keyDown(Keys.SHIFT).sendKeys("\n\n").
-                    keyUp(Keys.SHIFT).sendKeys("Thanks team Maybank :)\n")
-                    .build();
-
-            return texting;
-
-        }
 
     }
    public static class dataFile {
