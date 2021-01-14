@@ -159,7 +159,7 @@ public class startApp {
 
         //check existence data, if no new unsaved data, end chromedriver session
         if(table_size > savedAmount) {
-            System.out.println(nowDate + ": New order, updated file, total: "+ table_size + ", saved amount: "+ savedAmount);
+            System.out.println(nowDate + ": New order, updating file, total: "+ table_size + ", saved amount: "+ savedAmount);
             //initiate a new list to store invoice from the web
             List <String> invoicesL = new ArrayList<String>();
             // initiate a list of data
