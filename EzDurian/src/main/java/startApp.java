@@ -158,10 +158,12 @@ public class startApp {
         String nowDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
 
         if(table_size < savedAmount) {
+            
+            driver.quit();
         
             try {
             
-                bot.sendToTelegramPre("Total: "+table_size+ " Greater than saved amount: "+ savedAmount);   
+                bot.sendToTelegramPre("Total: "+table_size+ " lower than saved amount: "+ savedAmount);   
                 bot.sendToTelegramPre("Errors please check the server"); 
                 
             } 
@@ -211,9 +213,10 @@ public class startApp {
 
             for (int x = table_size; x > 0; x--) {
                     String el = invoicesL.get(x-1);
-                    //System.out.println(el);
+                    
 
                     if (!dataSet.contains(el)) {
+                        System.out.println("saved "+el);
 
                         //get index of the missing invoice in the list from web
                         int indexOfMissingInv = invoicesL.indexOf(el);
