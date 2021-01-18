@@ -350,6 +350,7 @@ public class startApp {
         }
         catch (Exception e) {
             System.out.println("errors alert :"+e);
+            return datafile;
         }
 
     }
