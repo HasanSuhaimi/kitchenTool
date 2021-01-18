@@ -316,40 +316,32 @@ public class startApp {
 
         File yamlFile = new File(file.getPath()+"/data.yaml");
         
-        try{
+        if (yamlFile.exists())
+        {
+            //get the yaml file and read the value, this is in windows
+            System.out.println("File exist, path: " + yamlFile.getAbsolutePath());
+            ObjectMapper om = new ObjectMapper(new YAMLFactory());
+            dataFile savedData = om.readValue(yamlFile, dataFile.class);
 
-            if (yamlFile.exists())
-            {
-                //get the yaml file and read the value, this is in windows
-                System.out.println("File exist, path: " + yamlFile.getAbsolutePath());
-                ObjectMapper om = new ObjectMapper(new YAMLFactory());
-                dataFile savedData = om.readValue(yamlFile, dataFile.class);
-
-                //return the file
-                return savedData;
-            }
-            else
-            {
-                System.out.println("Creating new data.yaml file");
-
-                String date = new SimpleDateFormat("dd-MMM-YYYY").format(new Date());
-                //initiate datafile class
-                dataFile datafile = new dataFile(date,new ArrayList<data>(),new ArrayList<String>());
-
-                //create new data.yaml inside the file folder Record
-                File tmpFile = new File(file, "data.yaml");
-                tmpFile.createNewFile();
-                // ObjectMapper is instantiated just like before
-                ObjectMapper om = new ObjectMapper(new YAMLFactory());
-                // map the data to the yaml file
-                om.writeValue(tmpFile, datafile);
-
-                return datafile;
-            }
-            
+            //return the file
+            return savedData;
         }
-        catch (Exception e) {
-            System.out.println("errors alert :"+e);
+        else
+        {
+            System.out.println("Creating new data.yaml file");
+
+            String date = new SimpleDateFormat("dd-MMM-YYYY").format(new Date());
+            //initiate datafile class
+            dataFile datafile = new dataFile(date,new ArrayList<data>(),new ArrayList<String>());
+
+            //create new data.yaml inside the file folder Record
+            File tmpFile = new File(file, "data.yaml");
+            tmpFile.createNewFile();
+            // ObjectMapper is instantiated just like before
+            ObjectMapper om = new ObjectMapper(new YAMLFactory());
+            // map the data to the yaml file
+            om.writeValue(tmpFile, datafile);
+
             return datafile;
         }
 
