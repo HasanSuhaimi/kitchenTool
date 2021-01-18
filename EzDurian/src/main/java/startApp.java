@@ -157,8 +157,24 @@ public class startApp {
 
         String nowDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
 
+        if(table_size < savedAmount) {
+        
+            try {
+            
+                bot.sendToTelegramPre("Total: "+table_size+ " Greater than saved amount: "+ savedAmount);   
+                bot.sendToTelegramPre("Errors please check the server"); 
+                
+            } 
+            catch (Exception e) {
+            
+                System.out.println(e);
+                e.printStackTrace();
+            
+            }
+        
+        }
         //check existence data, if no new unsaved data, end chromedriver session
-        if(table_size > savedAmount) {
+        else if(table_size > savedAmount) {
             System.out.println(nowDate + ": New order, updating file, total: "+ table_size + ", saved amount: "+ savedAmount);
             //initiate a new list to store invoice from the web
             List <String> invoicesL = new ArrayList<String>();
