@@ -131,6 +131,10 @@ public class startApp {
         Select statusJualan = new Select(driver.findElement(By.xpath("//select[@class=\"form-control\"]")));
         statusJualan.selectByVisibleText("Yang telah disahkan");
 
+        //specify total record = all
+        Select totalRecord = new Select(driver.findElement(By.xpath("//select[@id=\"record_limit\"]")));
+        totalRecord.selectByVisibleText("Semua");
+                
         //get today date
         WebElement date = driver.findElement(By.xpath("//input[@class=\"form-control\"]"));
         date.click();
