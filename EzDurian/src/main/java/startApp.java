@@ -167,8 +167,8 @@ public class startApp {
         
             try {
             
-                bot.sendToTelegramPre("Total: "+table_size+ " lower than saved amount: "+ savedAmount);   
-                bot.sendToTelegramPre("Errors please check the server"); 
+                //bot.sendToTelegramPre("Total: "+table_size+ " lower than saved amount: "+ savedAmount);   
+                //bot.sendToTelegramPre("Errors please check the server"); 
                 
             } 
             catch (Exception e) {
